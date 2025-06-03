@@ -1,6 +1,6 @@
-SELECT  MCDP_CD AS '진료과코드',
-        COUNT(DISTINCT PT_NO) AS '5월예약건수'
-  FROM APPOINTMENT
- WHERE APNT_YMD like '2022-05%'
-GROUP BY 진료과코드
-ORDER BY 5월예약건수 ASC,진료과코드 ASC
+SELECT MCDP_CD as '진료과코드',
+        count(pt_no) as '5월예약건수'
+FROM appointment
+WHERE date_format(apnt_ymd, "%Y-%m") = '2022-05'
+GROUP BY mcdp_cd
+ORDER BY 5월예약건수 asc, 진료과코드 asc
